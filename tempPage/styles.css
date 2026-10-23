@@ -226,12 +226,22 @@ nav a:hover {
    6. КАТАЛОГ КАРТОЧЕК (CSS GRID)
    Двумерная сетка: 3 колонки на desktop
    ============================================ */
+
+   #catalog h2 {
+    max-width: 1200px;
+    margin: 0 auto 1.5rem auto;
+    padding: 0 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
 .catalog-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     max-width: 1200px;
-    margin: 2rem auto;
+    margin: 0 auto;
     padding: 0 1rem;
 }
 
