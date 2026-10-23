@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ArtMatch — платформа для подбора уникальных предметов искусства и декора от независимых авторов">
+    <title>ArtMatch — Подбор предметов искусства и декора</title>
+    <style>
+        /* Минимальные стили только для структуры, как требует задание */
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #222;
+        }
+        header {
+            background-color: #f5f5f5;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #ddd;
+        }
+        header h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 1.5rem;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            background-color: #fafafa;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+        }
+        .hero h2 {
+            margin-top: 0;
+        }
+        .search-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+        .search-section form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .search-section label {
+            font-weight: 600;
+        }
+        .search-section input[type="text"] {
+            padding: 0.75rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 400px;
+        }
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .filters label {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            font-size: 0.9rem;
+        }
+        .filters select {
+            padding: 0.5rem;
+            font-size: 0.9rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .art-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            background-color: #fff;
+        }
+        .art-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #eee;
+            border-radius: 4px;
+        }
+        .art-card h3 {
+            margin: 0.75rem 0 0.25rem 0;
+            font-size: 1.1rem;
+        }
+        .art-card .artist {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0 0 0.5rem 0;
+        }
+        .art-card .meta {
+            font-size: 0.85rem;
+            color: #555;
+            margin: 0.25rem 0;
+        }
+        .art-card .price {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 0.75rem 0;
+        }
+        .art-card button {
+            width: 100%;
+            padding: 0.6rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .art-card button:hover {
+            background-color: #45a049;
+        }
+        footer {
+            background-color: #f5f5f5;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            border-top: 1px solid #ddd;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта с логотипом и навигацией -->
+    <header>
+        <h1>ArtMatch</h1>
+        <nav aria-label="Главная навигация">
+            <ul>
+                <li><a href="#catalog">Каталог</a></li>
+                <li><a href="#favorites">Избранное</a></li>
+                <li><a href="#about">О проекте</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Основное содержимое страницы -->
+    <main>
+        <!-- Приветственный блок (Hero) -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <h2 id="hero-heading">Найдите уникальный предмет искусства для вашего интерьера</h2>
+            <p>ArtMatch — это платформа для подбора картин, скульптур и авторского декора от независимых художников. Фильтруйте по категориям, материалам и цене.</p>
+            <a href="#catalog"><button type="button">Перейти в каталог</button></a>
+        </section>
+
+        <!-- Секция поиска и фильтрации -->
+        <section class="search-section" aria-labelledby="search-heading">
+            <h2 id="search-heading">Поиск предметов искусства</h2>
+            <form action="#" method="get">
+                <label for="search-input">Поиск по названию или автору:</label>
+                <input type="text" id="search-input" name="search" placeholder="Введите название или имя автора...">
+            </form>
+
+            <div class="filters">
+                <label for="category-filter">
+                    Категория:
+                    <select id="category-filter" name="category">
+                        <option value="all">Все категории</option>
+                        <option value="painting">Картины</option>
+                        <option value="vase">Вазы и керамика</option>
+                        <option value="sculpture">Скульптуры</option>
+                    </select>
+                </label>
+
+                <label for="material-filter">
+                    Материал:
+                    <select id="material-filter" name="material">
+                        <option value="all">Все материалы</option>
+                        <option value="oil">Масло</option>
+                        <option value="clay">Глина / Керамика</option>
+                        <option value="bronze">Бронза</option>
+                        <option value="canvas">Холст</option>
+                    </select>
+                </label>
+
+                <label for="price-filter">
+                    Цена:
+                    <select id="price-filter" name="price">
+                        <option value="all">Любая цена</option>
+                        <option value="0-5000">До 5 000 ₽</option>
+                        <option value="5000-15000">5 000 — 15 000 ₽</option>
+                        <option value="15000+">От 15 000 ₽</option>
+                    </select>
+                </label>
+
+                <button type="submit">Применить фильтры</button>
+            </div>
+        </section>
+
+        <!-- Каталог предметов искусства -->
+        <section id="catalog" aria-labelledby="catalog-heading">
+            <h2 id="catalog-heading">Каталог предметов искусства</h2>
+            <div class="catalog-grid">
+                <!-- Карточка 1: Картина -->
+                <article class="art-card">
+                    <img src="" alt="Картина маслом «Закат над морем»">
+                    <h3>Закат над морем</h3>
+                    <p class="artist">Автор: Иван Петров</p>
+                    <p class="meta">Категория: Картина</p>
+                    <p class="meta">Материал: Холст, масло</p>
+                    <p class="meta">Размер: 60×80 см</p>
+                    <p class="price">12 000 ₽</p>
+                    <button type="button">Добавить в избранное ♡</button>
+                </article>
+
+                <!-- Карточка 2: Ваза -->
+                <article class="art-card">
+                    <img src="" alt="Керамическая ваза «Весна»">
+                    <h3>Ваза «Весна»</h3>
+                    <p class="artist">Автор: Мария Сидорова</p>
+                    <p class="meta">Категория: Ваза</p>
+                    <p class="meta">Материал: Керамика</p>
+                    <p class="meta">Размер: 30×15 см</p>
+                    <p class="price">8 500 ₽</p>
+                    <button type="button">Добавить в избранное </button>
+                </article>
+
+                <!-- Карточка 3: Скульптура -->
+                <article class="art-card">
+                    <img src="" alt="Бронзовая скульптура «Мысль»">
+                    <h3>Скульптура «Мысль»</h3>
+                    <p class="artist">Автор: Алексей Иванов</p>
+                    <p class="meta">Категория: Скульптура</p>
+                    <p class="meta">Материал: Бронза</p>
+                    <p class="meta">Размер: 40×20×20 см</p>
+                    <p class="price">25 000 ₽</p>
+                    <button type="button">Добавить в избранное ♡</button>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer>
+        <p>&copy; 2024 ArtMatch. Все права защищены.</p>
+        <p>Контакты: <a href="mailto:info@artmatch.ru">info@artmatch.ru</a></p>
+    </footer>
+</body>
+</html>
